@@ -1,0 +1,138 @@
+---
+title: 'P1: Test a Perceptual Phenomenon'
+author: "Tegan Lohman"
+date: "February 21, 2016"
+output: html_document
+---
+
+###1. What is our independent variable? What is our dependent variable?
+Independent variable - congruent or incongruent font color  
+Dependent variable - time for the test subject to list the colors
+
+***
+
+###2. What is an appropriate set of hypotheses for this task? What kind of statistical test do you expect to perform? Justify your choices.
+H<sub>0</sub>: $\mu$<sub>c</sub> = $\mu$<sub>i</sub>  
+H<sub>A</sub>: $\mu$<sub>c</sub> &ne; $\mu$<sub>i</sub>  
+$\mu$<sub>c</sub> represents population mean response time for the congruent test, while $\mu$<sub>i</sub> represents population mean response time for the incongruent test. The null hypothesis is that the congruent and incongruent means are approximately equal, while the alternative hypothesis states that the two means are not equal.
+I will perform a two-tailed t-test for dependent variables. I chose a two-tailed test because a difference between the two means could fall in either direction, but there isn't any way of knowing without performing the test. I chose a dependent t-test because I don't have any population parameters to compare to, and the data is paired by respondent. And finally, I chose a t-test rather than a z-test because my data represents a sample rather than a population (n < 30).
+
+***
+
+#### My times:
+Test 1: 20.861 seconds  
+Test 2: 25.728 seconds
+
+***
+
+```{r, echo = FALSE} 
+# load data and add a column for the difference
+getwd()
+setwd("C:/Users/Tegan/Dropbox/Udacity/ND_Project_1")
+stroop <- read.csv("stroopdata.csv")
+stroop$D <- stroop$Congruent - stroop$Incongruent
+```
+After loading the data and adding a column for the difference, the data frame looks like this:
+```{r, echo = FALSE}
+head(stroop)
+
+```
+
+***
+###3. Report some descriptive statistics regarding this dataset. Include at least one measure of central tendency and at least one measure of variability.
+```{r, echo = FALSE}
+x_c <- mean(stroop$Congruent)
+x_i <- mean(stroop$Incongruent)
+x_c_i <- mean(stroop$D) 
+
+S_c <- sd(stroop$Congruent)
+S_i <- sd(stroop$Incongruent)
+S_c_i <- sd(stroop$D)
+
+
+```
+ Variable | Mean | Standard Deviation
+------------- | ------------- | -------------
+congruent | `r round(x_c, 2)` | `r round(S_c, 2)`
+incongruent | `r round(x_i, 2)` | `r round(S_i, 2)`
+difference (c - i) | `r round(x_c_i, 2)` | `r round(S_c_i, 2)`
+
+
+***
+
+###4. Provide one or two visualizations that show the distribution of the sample data. Write one or two sentences noting what you observe about the plot or plots.
+```{r, echo = FALSE}
+
+library('ggplot2')
+
+ggplot() + 
+  geom_histogram(aes(Congruent, fill="r"), alpha=.5, data=stroop, stat = "bin") +
+  geom_histogram(aes(Incongruent, fill="b"), alpha=.5, data=stroop, stat = "bin") +
+  scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+  labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+  scale_x_continuous(breaks = seq(0, 35, 5))
+
+
+```
+
+
+***
+
+The above histograms show the differences in response times for the congruent and incongruent tests. While both appear to have a somewhat normal distribution, the mean for the congruent tests is around 12 seconds while the mean for the incongruent tests is closer to 20 seconds.
+
+```{r, echo = FALSE}
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+  geom_point() +
+  labs(x = "Congruent time (seconds)", y = "Incongruent time (seconds)", title = "Scatter plot of incongruent vs. congruent times") +
+  geom_abline(slope = 1, intercept = 0, color = 'red') +
+  scale_x_continuous(limits = c(0,25)) +
+  scale_y_continuous(limits = c(0,40))
+
+```
+```{r}
+
+
+
+```
+***
+
+The chart above shows a scatter plot of respondents' incongruent vs. congruent times. The red line represents where equal times would fall (y=x), and makes clear once again that for all respondents, the incongruent times are greater than the congruent times.
+
+###5. Now, perform the statistical test and report your results. What is your confidence level and your critical statistic value? Do you reject the null hypothesis or fail to reject it? Come to a conclusion in terms of the experiment task. Did the results match up with your expectations?
+```{r, echo = FALSE}
+
+n <- length(stroop$D) - 1
+SE <- abs((S_c_i/(n^(1/2))))
+t <- (x_c_i)/SE
+t_crit <- qt(c(0.025, 0.975), df = 23)
+p <- pt(t, df = 23)
+margin_error <- t_crit*SE
+
+```
+t = `r round(t, 3)`    
+t<sub>critical</sub> = (`r round(t_crit, 3)`)   
+For an $\alpha$ level of 0.05, this falls well within the critical region, with p < 0.0001   
+$\mu$<sub>c</sub> - $\mu$<sub>i</sub> =  `r round(x_c_i, 3)`   
+95% confidence interval: (`r round(x_c_i + margin_error, 3)`)    
+Decision: Reject H<sub>0</sub>  
+Yes, the results matched my expectation. There was a very significant difference between the sample means, which lead to a t-statistic well within the critical region; the probablility of it randomly occuring is `r p`.
+
+ 
+###6. Optional: What do you think is responsible for the effects observed? Can you think of an alternative or similar task that would result in a similar effect? Some research about the problem will be helpful for thinking about these two questions!
+I expected the times for the incongruent test to be longer, and the t-test confirmed this. I found personally that my brain wanted to read the words, and focusing on the colors alone was very difficult. If the test had been reversed, in other words, if I was to read the words rather than say the colors, I would expect the congruent and incongruent times to be much closer together. It seems we are conditioned to read words placed in front of us; it is quite challenging to see a word and not read iat.  
+There are several variations of this experiment listed on the website the project directions referenced, so I tried to think of some others not listed. These might include:  
+  - Varying the font type or size   
+  - Repeating the study in different languages, for native speakers (character-based langauges, for example)   
+  - Repeating the study for second language speakers, in varying degrees of fluency    
+Since the Stroop effect is really more generally about interference in reaction time, it could also be measured using other tasks. For example, reaction time to traffic signs could be measured using a video game interface, with the street signs made incongruent by word or color (eg. a green stop sign).  
+
+***
+####Sources Referenced:
+https://stat.ethz.ch/R-manual/R-devel/library/stats/html/sd.html  
+https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf  
+https://sites.google.com/site/manabusakamoto/home/r-tutorials/r-tutorial-4  
+https://faculty.washington.edu/chudler/java/ready.html  
+https://en.wikipedia.org/wiki/Stroop_effect
+http://www.sthda.com/english/wiki/ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page-r-software-and-data-visualization
+http://conversionxl.com/one-tailed-vs-two-tailed-tests/
+http://stackoverflow.com/questions/24932940/ggplot-does-not-show-legend-in-geom-histogram

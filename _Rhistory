@@ -1,0 +1,470 @@
+wd()
+get.wd()
+getwd()
+change_wd(C:\Users\Tegan\Dropbox\Udacity\ND Project 1)
+set_wd(C:\Users\Tegan\Dropbox\Udacity\ND Project 1)
+set_wd("C:\Users\Tegan\Dropbox\Udacity\ND Project 1")
+set_wd("C:\Users\Tegan\Dropbox\Udacity\ND_Project_1")
+set_wd("../")
+setwd("C:\Users\Tegan\Dropbox\Udacity\ND_Project_1")
+setwd("../")
+getwd()
+setwd(~/Dropbox/Udacity/ND_Project_1)
+setwd("~/Dropbox/Udacity/ND_Project_1")
+?setwd
+setwd("C:\Users\Tegan\Dropbox\Udacity\ND_Project_1")
+setwd("C:/Users/Tegan/Dropbox/Udacity/ND_Project_1")
+stroop <- read.csv("stroopdata.csv")
+list.files
+list.files()
+stroop <- read.csv("stroopdata.csv")
+View(stroop)
+View(stroop)
+stroop$D <- stroop$Congruent - stroop$Incongruent
+View(stroop)
+head(stroop)
+x_congruent = mean(stroop$Congruent)
+x_incongruent = mean(stroop$Incongruent)
+x_difference = mean(stroop$D)
+head(stroop)
+?standard deviation
+?stdev
+S_congruent = sd(stroop$Congruent)
+library('ggplot2')
+ggplot(data = stroop, aes(D)) +
+geom_histogram()
+ggplot(data = stroop, aes(D)) +
+geom_histogram(fill = 'purple', binwidth = 1) +
+labs(x = "congruent time - incongruent time")
+ggplot(data = stroop, aes(D)) +
+geom_histogram(fill = 'purple', color = 'black', binwidth = 1) +
+labs(x = "congruent time - incongruent time")
+ggplot(data = stroop, aes(D)) +
+geom_histogram(fill = 'purple', color = 'black', binwidth = 2) +
+labs(x = "congruent time - incongruent time")
+ggplot(data = stroop, aes(D)) +
+geom_histogram(fill = 'purple', color = 'black', binwidth = 2) +
+labs(x = "congruent time - incongruent time", title = "Histogram of the difference between respondents' congruent and incongruent times")
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+geom_point()
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+geom_point() +
+labs(x = "Congruent time (seconds)", y = "Incongruent time (seconds)", title = "Chart 2: Scatter plot of incongruent vs. congruent times") +
+geom_line(y = x)
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+geom_point() +
+labs(x = "Congruent time (seconds)", y = "Incongruent time (seconds)", title = "Chart 2: Scatter plot of incongruent vs. congruent times") +
+geom_abline(slope = 1, intercept = 0, color = 'red')
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+geom_point() +
+labs(x = "Congruent time (seconds)", y = "Incongruent time (seconds)", title = "Chart 2: Scatter plot of incongruent vs. congruent times") +
+geom_abline(slope = 1, intercept = 0, color = 'red') +
+scale_x_continuous(breaks = seq(0,25,5)) +
+scale_y_continuous(breaks = seq(0, 40,5))
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+geom_point() +
+labs(x = "Congruent time (seconds)", y = "Incongruent time (seconds)", title = "Chart 2: Scatter plot of incongruent vs. congruent times") +
+geom_abline(slope = 1, intercept = 0, color = 'red') +
+scale_x_continuous(breaks = seq(0,25,5)) +
+scale_y_continuous(breaks = seq(0, 40,5))
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+geom_point() +
+labs(x = "Congruent time (seconds)", y = "Incongruent time (seconds)", title = "Chart 2: Scatter plot of incongruent vs. congruent times") +
+geom_abline(slope = 1, intercept = 0, color = 'red') +
+scale_x_continuous(limits = c(0,)) +
+scale_y_continuous(breaks = seq(0, 40,5))
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+geom_point() +
+labs(x = "Congruent time (seconds)", y = "Incongruent time (seconds)", title = "Chart 2: Scatter plot of incongruent vs. congruent times") +
+geom_abline(slope = 1, intercept = 0, color = 'red') +
+scale_x_continuous(limits = c(0,max())) +
+scale_y_continuous(breaks = seq(0, 40,5))
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+geom_point() +
+labs(x = "Congruent time (seconds)", y = "Incongruent time (seconds)", title = "Chart 2: Scatter plot of incongruent vs. congruent times") +
+geom_abline(slope = 1, intercept = 0, color = 'red') +
+scale_x_continuous(limits = c(0,25)) +
+scale_y_continuous(breaks = seq(0, 40,5))
+ggplot(data = stroop, aes(Congruent, Incongruent)) +
+geom_point() +
+labs(x = "Congruent time (seconds)", y = "Incongruent time (seconds)", title = "Chart 2: Scatter plot of incongruent vs. congruent times") +
+geom_abline(slope = 1, intercept = 0, color = 'red') +
+scale_x_continuous(limits = c(0,25)) +
+scale_y_continuous(limits = c(0,40))
+t <- (x_i - x_c)/(S_c_i/((length(stroop$D)-1)^(1/2)))
+x_i <- mean(stroop$Incongruent)
+x_c <- mean(stroop$Congruent)
+x_i <- mean(stroop$Incongruent)
+x_c_i <- mean(stroop$D)
+S_c <- sd(stroop$Congruent)
+S_i <- sd(stroop$Incongruent)
+S_c_i <- sd(stroop$D)
+t <- (x_i - x_c)/(S_c_i/((length(stroop$D)-1)^(1/2)))
+(length(stroop$D)-1)
+(length(stroop$D)-1)^(1/2)
+(S_c_i/((length(stroop$D)-1)^(1/2)))
+t <- (x_c_i)/(S_c_i/((length(stroop$D)-1)^(1/2)))
+?t
+t_crit = qt(c(2.5, 97.5), df = 23)
+t_crit = qt(c(.025, .975), df = 23)
+margin_error <- t_crit*(S_c_i/((length(stroop$D)-1)^(1/2)))
+SE = abs((S_c_i/((length(stroop$D)-1)^(1/2))))
+SE <- abs((S_c_i/((length(stroop$D)-1)^(1/2))))
+t <- (x_c_i)/SE
+t_crit <- qt(c(.025, .975), df = 23)
+margin_error <- t_crit*SE
+p <- pt(t, df = 23)
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue') +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red')
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue') +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red') +
+legend()
+?legend
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue') +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red') +
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue') +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red') +
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black') +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black') +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black') +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_color_discrete(name = "Test", breaks = c("Congruent", "Incongruent"),
+labels = c("Incongruent", "Congruent"))
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black') +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_discrete(name = "Test", breaks = c("Congruent", "Incongruent"),
+labels = c("Incongruent", "Congruent"))
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', legendpostion = "right",
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', legendposition = "right",
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', legendPostion = "right",
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', legendPosition = "right",
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', legendPosition="top",
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', legendPosition = "right",
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+?geom_histogram
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_colour_manual(name = 'Legend', values = c('blue', 'red'))
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_manual(name = 'Legend', values = c('blue', 'red'))
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_manual(name = 'Legend', values = c('blue', 'red'))
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"),
+labels=c("b"="Congruent", "r"="Incongruent"))
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent, color = 'blue'), fill = 'blue', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent, color = 'red'), fill = 'red', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"),
+labels=c("b"="Congruent", "r"="Incongruent"))
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', show.legend = TRUE,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_manual(name="group", values=c("r" = 'red', "b"= 'blue'),
+labels=c("b"="Congruent", "r"="Incongruent"))
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_manual(name="group", values=c("r" = 'red', "b"= 'blue'),
+labels=c("b"="Congruent", "r"="Incongruent"))
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_discrete(name="group", values=c("r" = 'red', "b"= 'blue'),
+labels=c("b"="Congruent", "r"="Incongruent"))
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_discrete(name="group", values=c('red', 'blue'),
+labels=c("Congruent", "Incongruent"))
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_discrete(name="group", hue=c('red', 'blue'),
+labels=c("Congruent", "Incongruent"))
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_discrete(name="group", color=c('red', 'blue'),
+labels=c("Congruent", "Incongruent"))
+?scale_fill_discrete
+ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_manual(name="group", values = c('red', 'blue'),
+labels=c("Congruent", "Incongruent"))
+library('gridExtra')
+p1 <- ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+p2 <- ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_fill_manual(name="group", values = c('red', 'blue'),
+labels=c("Congruent", "Incongruent"))
+library('gridExtra')
+grid.arrange(p1, p2, ncol = 2)
+p1 <- ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent tests") +
+p2 <- ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for incongruent tests") +
+scale_fill_manual(name="group", values = c('red', 'blue'),
+labels=c("Congruent", "Incongruent"))
+p1 <- ggplot(data = stroop, aes(Congruent)) +
+geom_histogram(fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent tests") +
+p2 <- ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for incongruent tests") +
+scale_fill_manual(name="group", values = c('red', 'blue'),
+labels=c("Congruent", "Incongruent"))
+library('gridExtra')
+grid.arrange(p1, p2, ncol = 2)
+h1 <- ggplot(data = stroop, aes(Congruent)) +
+geom_histogram(fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent tests") +
+h2 <- ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for incongruent tests") +
+scale_fill_manual(name="group", values = c('red', 'blue'),
+labels=c("Congruent", "Incongruent"))
+library('gridExtra')
+grid.arrange(h1, h2, ncol = 2)
+h1 <- ggplot(data = stroop, aes(Congruent)) +
+geom_histogram(fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent tests")
+h1 <- ggplot(data = stroop, aes(Congruent)) +
+geom_histogram(fill = 'blue', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent tests")
+h2 <- ggplot(data = stroop) +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red', color = 'black', binwidth = 1,
+alpha = 0.5) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for incongruent tests") +
+scale_fill_manual(name="group", values = c('red', 'blue'),
+labels=c("Congruent", "Incongruent"))
+n <- length(stroop$d) - 1
+getwd()
+setwd("C:/Users/Tegan/Dropbox/Udacity/ND_Project_1")
+stroop <- read.csv("stroopdata.csv")
+stroop$D <- stroop$Congruent - stroop$Incongruent
+```
+After loading the data and adding a column for the difference, the data frame looks like this:
+```{r, echo = FALSE}
+head(stroop)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+source('~/.active-rstudio-document', echo=TRUE)
+n <- length(stroop$D) - 1
+SE <- abs((S_c_i/(n^(1/2))))
+t <- (x_c_i)/SE
+t_crit <- qt(c(.05), df = 23)
+t_crit <- qt(c(0.025, 0.975), df = 23)
+p <- pt(t, df = 23)
+margin_error <- t_crit*SE
+ggplot() +
+geom_histogram(data = stroop, aes(congruent), fill = 'blue') +
+geom_histogram(data = stroop, aes(incongruent), fill = 'red')
+ggplot() +
+geom_histogram(data = stroop, aes(Congruent), fill = 'blue') +
+geom_histogram(data = stroop, aes(Incongruent), fill = 'red')
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", colour="r"), alpha=.4, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", colour="b"), alpha=.4, data=stroop, stat = "bin") +
+scale_colour_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="blue values", "r"="red values")) +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="blue values", "r"="red values"))
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", colour="r"), alpha=.4, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", colour="b"), alpha=.4, data=stroop, stat = "bin") +
+scale_colour_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="blue values", "r"="red values")) +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", colour="r"), alpha=.4, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", colour="b"), alpha=.4, data=stroop, stat = "bin") +
+scale_colour_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="blue values", "r"="red values"))
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", colour="r"), alpha=.4, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", colour="b"), alpha=.4, data=stroop, stat = "bin") +
+scale_colour_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="blue values", "r"="red values")) +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times"))
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", colour="r"), alpha=.4, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", colour="b"), alpha=.4, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", colour="r"), alpha=.4, data = stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", colour="b"), alpha=.4, data = stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times"))
+ggplot() +
+geom_histogram(aes(Congruent, fill="r"), alpha=.4, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b"), alpha=.4, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r""), alpha=.5, data=stroop, stat = "bin", color = 'red') +
+geom_histogram(aes(Incongruent, fill="b"), alpha=.5, data=stroop, stat = "bin", color = 'blue') +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = 'red'), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = 'blue'), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = 'red'), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = 'blue'), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+scale_color_manual(NULL)
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = 'red'), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = 'blue'), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+scale_color_manual(NULL)
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = 'red'), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = 'blue'), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+scale_color_manual()
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = 'red'), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = 'blue'), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+?scale_color_manual
+?scale_color_discrete
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = 'black'), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = 'black'), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_color_discrete(na.value = "black")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = 'black'), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = 'black'), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = 'black'), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = 'black'), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = 'black'), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = 'black'), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r", color = "black"), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b", color = "black"), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+ggplot() +
+geom_histogram(aes(Congruent, fill="r"), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b"), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests")
+geom_histogram(aes(Congruent, fill="r"), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b"), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_x_continuous(breaks = seq(0, 35, 5))
+ggplot() +
+geom_histogram(aes(Congruent, fill="r"), alpha=.5, data=stroop, stat = "bin") +
+geom_histogram(aes(Incongruent, fill="b"), alpha=.5, data=stroop, stat = "bin") +
+scale_fill_manual(name="group", values=c("r" = "red", "b"="blue"), labels=c("b"="incongruent times", "r"="congruent times")) +
+labs(x = "Reaction time (seconds)", title = "Reaction times for congruent and incongruent tests") +
+scale_x_continuous(breaks = seq(0, 35, 5))
